@@ -13,3 +13,8 @@ class CalcTest(SimpleTestCase):
         res = calc.subtract(10, 4)
 
         self.assertEqual(res, 6)
+
+    def test_double(self):
+        res = calc.double(5)
+
+        self.assertEqual(res, 10)
