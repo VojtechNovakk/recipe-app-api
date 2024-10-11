@@ -5,8 +5,8 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from rest_framework.test import APIClient
-from rest_framework import status
+from rest_framework.test import APIClient # type: ignore
+from rest_framework import status # type: ignore
 
 
 CREATE_USER_URL = reverse("user:create")
@@ -51,7 +51,7 @@ class PublicUserApiTest(TestCase):
         """Test an error is returned if password less than 5 chars."""
         payload = {
             "email": "test@example.com",
-            "password": "testpass123",
+            "password": "pw",
             "name": "Test Name",
         }
         res = self.client.post(CREATE_USER_URL, payload)
@@ -61,4 +61,3 @@ class PublicUserApiTest(TestCase):
             email=payload["email"]
         ).exists()
         self.assertFalse(user_exist)
-
